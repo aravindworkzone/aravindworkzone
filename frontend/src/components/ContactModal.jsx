@@ -1,12 +1,6 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
-// ── Replace these with your EmailJS credentials ──
-const SERVICE_ID  = "service_7ff3pyt";
-const TEMPLATE_ID = "template_7cdfjld";
-const PUBLIC_KEY  = "yrQ3RgDACHVqGaz1k";
-// ─────────────────────────────────────────────────
-
 export default function ContactModal({ onClose }) {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle");
@@ -18,10 +12,10 @@ export default function ContactModal({ onClose }) {
     setStatus("sending");
     try {
       await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
         { from_name: form.name, from_email: form.email, message: form.message },
-        PUBLIC_KEY
+        import.meta.env.VITE_PUBLIC_KEY
       );
       setStatus("success");
     } catch {
