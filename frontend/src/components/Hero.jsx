@@ -37,7 +37,7 @@ export default function Hero() {
   return (
     <section id="home" className="min-h-screen flex items-center pt-[62px]"
       style={{ background: "#fafaf8", fontFamily: "'DM Sans', sans-serif" }}>
-      <div className="w-full max-w-[1000px] mx-auto px-6 md:px-16 py-16 md:py-0
+      <div className="w-full max-w-[1000px] mx-auto px-6 md:px-16 py-16 md:py-10
         flex flex-col md:grid md:gap-20 md:items-center gap-10"
         style={{ gridTemplateColumns: "1fr auto" }}>
 
@@ -53,7 +53,7 @@ export default function Hero() {
             Full-Stack Developer<br />
             building{" "}
             <em style={{ fontStyle: "italic", color: "#1a56e8" }}>real products</em>
-            <br className="hidden sm:block" />
+            <br className="max-sm:hidden" />
             {" "}with the MERN stack.
           </h1>
 
@@ -74,7 +74,7 @@ export default function Hero() {
             { label: "Role", val: "MERN Stack Dev", color: "#111110" },
             { label: "Stack", val: "React · Node · Mongo", color: "#1a56e8" },
             { label: "Projects Live", val: "2", color: "#111110" },
-            { label: "GitLab Commits", val: "61+", color: "#111110" },
+            { label: "GitLab Commits", val: "60+", color: "#111110" },
             { label: "Status", val: "Open to work", color: "#1a7a4a" },
           ].map((row, i, arr) => (
             <div key={row.label} className="flex justify-between items-center py-3"

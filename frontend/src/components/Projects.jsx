@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Btn } from "./Hero";
 
-const arch = ["JWT + HTTP-only cookies", "Refresh token rotation", "Reuse detection", "RTK Query caching", "AI Integration", "Soft delete"];
-const techTodo = ["React", "Node.js", "MongoDB", "Express", "Redux", "Tailwind", "Vite"];
-const techOwta = ["React", "Node.js", "MongoDB", "Tailwind", "Express"];
+const arch = ["JWT + HTTP-only cookies", "Refresh token rotation", "Reuse detection", "RTK Query caching", "AI Integration", "Soft delete", "Session Limitation"];
+const techTodo = ["React", "Node.js", "MongoDB", "Express", "Redux(RTK query, Slice)", "Tailwind"];
+const techOwta = ["React", "Node.js", "MongoDB", "Express", "Redux", "Tailwind"];
 
 export default function Projects() {
   const [hovered, setHovered] = useState(null);
@@ -33,7 +33,7 @@ export default function Projects() {
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-1.5">
                 <span style={{ fontFamily: "'Lora', Georgia, serif", fontSize: "clamp(22px, 3vw, 34px)", fontWeight: 700, color: "#111110", letterSpacing: "-0.02em" }}>
-                  TodoPlanner
+                  Todo Planner
                 </span>
                 <span className="px-3 py-0.5 rounded-full text-[10px] font-medium tracking-wider"
                   style={{ fontFamily: "'DM Mono',monospace", background: "#eef2fd", border: "1px solid rgba(26,86,232,0.2)", color: "#1a56e8" }}>
@@ -45,7 +45,7 @@ export default function Projects() {
               </span>
             </div>
             <div className="flex gap-2.5 flex-shrink-0">
-              <Btn variant="accent" href="https://aravind-workzone.vercel.app">Live →</Btn>
+              <Btn variant="accent" href="https://workzone-todo.vercel.app">Live →</Btn>
               <Btn variant="border" href="https://gitlab.com/aravind.workzone/todo.git">GitLab</Btn>
             </div>
           </div>
@@ -53,7 +53,7 @@ export default function Projects() {
           <div className="flex flex-wrap gap-6 md:gap-10 py-5 mb-6"
             style={{ borderTop: "1px solid #e4e2dd", borderBottom: "1px solid #e4e2dd" }}>
             {[
-              { val: "61", label: "Commits" },
+              { val: "67", label: "Commits" },
               { val: "3", label: "Task types" },
               { val: "7-day", label: "Productivity" },
               { val: "AI", label: "Integrated" },
