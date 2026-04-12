@@ -3,15 +3,15 @@ import { useState } from "react";
 const groups = [
   {
     label: "Frontend",
-    items: [{ icon: "⚛️", name: "React" }, { icon: "🎨", name: "Tailwind CSS" }, { icon: "🔄", name: "Redux + RTK Query" }, { icon: "🚀", name: "Vite" }],
+    items: [{ icon: "🟨", name: "JavaScript" },{ icon: "⚛️", name: "React" }, { icon: "🎨", name: "Tailwind CSS" }, { icon: "🔄", name: "Redux + RTK Query" }],
   },
   {
     label: "Backend",
-    items: [{ icon: "🟢", name: "Node.js" }, { icon: "🚂", name: "Express" }, { icon: "🍃", name: "MongoDB" }, { icon: "🗄️", name: "Mongoose" }],
+    items: [{ icon: "🟢", name: "Node.js" }, { icon: "⬛", name: "Express" }, { icon: "🍃", name: "MongoDB" }, { icon: "🗄️", name: "Mongoose" }],
   },
   {
     label: "Auth & Tools",
-    items: [{ icon: "🔐", name: "JWT Auth" }, { icon: "🔌", name: "REST API" }, { icon: "📦", name: "Git" }],
+    items: [{ icon: "🔐", name: "JWT Auth" }, { icon: "🔌", name: "REST API" }, { icon: "📦", name: "Git" },{ icon: "🦊", name: "GitLab" }],
   },
 ];
 
