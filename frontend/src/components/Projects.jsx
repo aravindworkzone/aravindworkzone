@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Btn } from "./Hero";
 
-const arch = ["JWT + HTTP-only cookies", "Refresh token rotation", "Reuse detection", "RTK Query caching", "AI Integration", "Soft delete", "Session Limitation"];
-const techTodo = ["React", "Node.js", "MongoDB", "Express", "Redux(RTK query, Slice)", "Tailwind"];
-const techOwta = ["React", "Node.js", "MongoDB", "Express", "Redux", "Tailwind"];
+const arch = ["JWT + HTTP-only cookies", "Refresh token rotation", "Refresh Token Reuse Detection", "RTK Query caching", "AI Integration", "Soft delete", "Session Limitation"];
+const techTodo = ["React", "Node.js", "MongoDB", "Express", "Redux Toolkit + RTK Query", "Tailwind"];
 
 export default function Projects() {
   const [hovered, setHovered] = useState(null);
@@ -33,7 +32,7 @@ export default function Projects() {
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-1.5">
                 <span style={{ fontFamily: "'Lora', Georgia, serif", fontSize: "clamp(22px, 3vw, 34px)", fontWeight: 700, color: "#111110", letterSpacing: "-0.02em" }}>
-                  Todo Planner
+                  WorkZone - Task Management
                 </span>
                 <span className="px-3 py-0.5 rounded-full text-[10px] font-medium tracking-wider"
                   style={{ fontFamily: "'DM Mono',monospace", background: "#eef2fd", border: "1px solid rgba(26,86,232,0.2)", color: "#1a56e8" }}>
@@ -53,9 +52,9 @@ export default function Projects() {
           <div className="flex flex-wrap gap-6 md:gap-10 py-5 mb-6"
             style={{ borderTop: "1px solid #e4e2dd", borderBottom: "1px solid #e4e2dd" }}>
             {[
-              { val: "67", label: "Commits" },
+              { val: "70", label: "Commits" },
               { val: "3", label: "Task types" },
-              { val: "7-day", label: "Productivity" },
+              { val: "3", label: "Active Sessions" },
               { val: "AI", label: "Integrated" },
             ].map((s) => (
               <div key={s.label}>
@@ -92,42 +91,6 @@ export default function Projects() {
                 {t}
               </span>
             ))}
-          </div>
-        </div>
-
-        <div
-          className="rounded-2xl px-7 md:px-10 py-7 md:py-8 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-5 cursor-default"
-          style={{
-            background: "white", border: "1px solid #e4e2dd",
-            boxShadow: hovered === "owta" ? "0 8px 28px rgba(0,0,0,0.08)" : "0 1px 4px rgba(0,0,0,0.03)",
-            transform: hovered === "owta" ? "translateY(-2px)" : "translateY(0)",
-            transition: "all 0.25s ease",
-          }}
-          onMouseEnter={() => setHovered("owta")} onMouseLeave={() => setHovered(null)}
-        >
-          <div>
-            <div className="flex flex-wrap items-center gap-3 mb-1.5">
-              <span style={{ fontFamily: "'Lora', Georgia, serif", fontSize: 22, fontWeight: 700, color: "#111110", letterSpacing: "-0.02em" }}>OWTA</span>
-              <span className="px-3 py-0.5 rounded-full text-[10px] font-medium tracking-wider"
-                style={{ fontFamily: "'DM Mono',monospace", background: "#edf6f1", border: "1px solid rgba(26,122,74,0.18)", color: "#1a7a4a" }}>
-                In Development
-              </span>
-            </div>
-            <p className="text-[14px] text-[#6b6860] leading-[1.7] max-w-[500px] mb-3.5">
-              Full-stack e-commerce platform — product management, cart system, order flow, and admin panel.
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {techOwta.map((t) => (
-                <span key={t} className="px-3 py-1 rounded-full text-[11px]"
-                  style={{ fontFamily: "'DM Mono',monospace", background: "#f4f3ef", border: "1px solid #e4e2dd", color: "#6b6860" }}>
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="px-4 py-2 rounded-md text-[11px] tracking-wider self-start sm:self-auto"
-            style={{ fontFamily: "'DM Mono',monospace", background: "#f4f3ef", border: "1px solid #e4e2dd", color: "#b8b5ae" }}>
-            Coming Soon
           </div>
         </div>
       </div>

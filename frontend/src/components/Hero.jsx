@@ -73,8 +73,8 @@ export default function Hero() {
           {[
             { label: "Role", val: "MERN Stack Dev", color: "#111110" },
             { label: "Stack", val: "React · Node · Mongo", color: "#1a56e8" },
-            { label: "Projects Live", val: "2", color: "#111110" },
-            { label: "GitLab Commits", val: "60+", color: "#111110" },
+            { label: "Projects Live", val: "1", color: "#111110" },
+            { label: "GitLab Commits", val: "85+", color: "#111110" },
             { label: "Status", val: "Open to work", color: "#1a7a4a" },
           ].map((row, i, arr) => (
             <div key={row.label} className="flex justify-between items-center py-3"
