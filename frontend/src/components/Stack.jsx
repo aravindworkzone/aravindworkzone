@@ -1,17 +1,44 @@
 import { useState } from "react";
+import useReveal from "../hooks/useReveal";
 
 const groups = [
   {
     label: "Frontend",
-    items: [{ icon: "🟨", name: "JavaScript" },{ icon: "⚛️", name: "React" }, { icon: "🎨", name: "Tailwind CSS" }, { icon: "🔄", name: "Redux + RTK Query" }],
+    items: [
+      { icon: "⚛️", name: "React" },
+      { icon: "⚡", name: "Vite" },
+      { icon: "🎨", name: "Tailwind CSS" },
+      { icon: "🔄", name: "Redux Toolkit" },
+      { icon: "📡", name: "RTK Query" },
+      { icon: "🔷", name: "TypeScript" },
+    ],
   },
   {
     label: "Backend",
-    items: [{ icon: "🟢", name: "Node.js" }, { icon: "⬛", name: "Express" }, { icon: "🍃", name: "MongoDB" }, { icon: "🗄️", name: "Mongoose" }],
+    items: [
+      { icon: "🟢", name: "Node.js" },
+      { icon: "⬛", name: "Express" },
+      { icon: "🔌", name: "REST API" },
+      { icon: "🔐", name: "JWT Auth" },
+      { icon: "♻️", name: "Refresh Token Rotation" },
+    ],
   },
   {
-    label: "Auth & Tools",
-    items: [{ icon: "🔐", name: "JWT Auth" }, { icon: "🔌", name: "REST API" }, { icon: "📦", name: "Git" },{ icon: "🦊", name: "GitLab" }],
+    label: "Database",
+    items: [
+      { icon: "🍃", name: "MongoDB" },
+      { icon: "🗄️", name: "Mongoose" },
+    ],
+  },
+  {
+    label: "Tools & Deployment",
+    items: [
+      { icon: "📦", name: "Git" },
+      { icon: "🐙", name: "GitHub" },
+      { icon: "▲", name: "Vercel" },
+      { icon: "🚀", name: "Render" },
+      { icon: "✉️", name: "EmailJS" },
+    ],
   },
 ];
 
@@ -36,15 +63,16 @@ function Pill({ icon, name }) {
 }
 
 export default function Stack() {
+  const reveal = useReveal();
   return (
     <section id="skills" className="py-20 md:py-28" style={{ background: "#fafaf8", fontFamily: "'DM Sans', sans-serif" }}>
-      <div className="max-w-[1000px] mx-auto px-6 md:px-16">
+      <div className="max-w-[1000px] mx-auto px-6 md:px-16" ref={reveal.ref}>
 
-        <div className="flex items-baseline justify-between mb-10 md:mb-12">
+        <div className={`flex items-baseline justify-between mb-10 md:mb-12 ${reveal.className}`}>
           <h2 style={{ fontFamily: "'Lora', Georgia, serif", fontSize: "clamp(22px, 2.8vw, 30px)", fontWeight: 700, color: "#111110", letterSpacing: "-0.02em" }}>
             Stack
           </h2>
-          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#b8b5ae", letterSpacing: "0.08em" }}>03 / tools I use</span>
+          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#b8b5ae", letterSpacing: "0.08em" }}>04 / tools I use</span>
         </div>
 
         {groups.map((g) => (
