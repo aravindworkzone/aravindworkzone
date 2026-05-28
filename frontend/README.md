@@ -1,16 +1,32 @@
-# React + Vite
+# Aravind A — MERN Stack Developer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Open to full-stack roles | React · Node.js · MongoDB · TypeScript
 
-Currently, two official plugins are available:
+I build production-grade web apps with clean architecture, secure auth, and real deployment experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Live Projects
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+| Project | Stack | Live |
+|---|---|---|
+| [WorkZone](https://github.com/aravindworkzone/Workzone) | React, Node, MongoDB, JWT, Gemini AI | [workzone-todo.vercel.app](https://workzone-todo.vercel.app) |
+| [Arkalayn Kitty](https://github.com/aravindworkzone/Arkalayn-kitty) | React, Node, TypeScript, MongoDB, RBAC | [arkalynkitty-fin.vercel.app](https://arkalynkitty-fin.vercel.app) |
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Stack
+
+**Frontend** — React, Vite, Tailwind CSS, Redux Toolkit, RTK Query  
+**Backend** — Node.js, Express, REST APIs  
+**Database** — MongoDB, Mongoose  
+**Auth** — JWT, HTTP-only cookies, Refresh token rotation  
+**Tools** — Git, Vercel, Render
+
+---
+
+## 📬 Hire Me
+
+📧 aravind.workzone@gmail.com  
+🌐 [Portfolio](https://aravind-mern.vercel.app)  
+💼 [LinkedIn](https://linkedin.com/in/aravind-a-dev)
