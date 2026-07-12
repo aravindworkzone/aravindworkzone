@@ -2,6 +2,32 @@ import { useState, useEffect } from "react";
 
 const links = ["About", "Projects", "Stack"];
 
+function NavLink({ label, isActive, onClick }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative text-[13px] font-medium bg-transparent border-none cursor-pointer pb-0.5 transition-colors duration-200"
+      style={{ color: isActive || hovered ? "#111110" : "#6b6860" }}
+    >
+      {label}
+      <span
+        aria-hidden
+        className="absolute left-0 right-0 -bottom-0.5 h-[2px] rounded-full"
+        style={{
+          background: "#1a56e8",
+          opacity: isActive ? 1 : hovered ? 0.35 : 0,
+          transform: isActive || hovered ? "scaleX(1)" : "scaleX(0)",
+          transformOrigin: "left",
+          transition: "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease",
+        }}
+      />
+    </button>
+  );
+}
+
 export default function Navbar() {
   const [active, setActive] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,11 +66,12 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-9">
           {links.map((l) => (
-            <button key={l} onClick={() => scrollTo(l === "Stack" ? "skills" : l)}
-              className="text-[13px] font-medium bg-transparent border-none cursor-pointer transition-colors duration-200"
-              style={{ color: active === l.toLowerCase() || (l === "Stack" && active === "skills") ? "#111110" : "#6b6860" }}>
-              {l}
-            </button>
+            <NavLink
+              key={l}
+              label={l}
+              isActive={active === l.toLowerCase() || (l === "Stack" && active === "skills")}
+              onClick={() => scrollTo(l === "Stack" ? "skills" : l)}
+            />
           ))}
           <button onClick={() => scrollTo("contact")}
             className="text-[13px] font-semibold px-5 py-2 rounded-md bg-[#111110] text-[#fafaf8] border-none cursor-pointer hover:opacity-80 transition-opacity">

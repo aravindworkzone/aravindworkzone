@@ -52,19 +52,26 @@ const items = [
 
 function Card({ item, index }) {
   const [hovered, setHovered] = useState(false);
+  const [spot, setSpot] = useState({ x: 50, y: 50 });
   return (
     <div
       className="rounded-2xl p-6 md:p-7 cursor-default h-full"
       style={{
-        background: "white",
+        background: hovered
+          ? `radial-gradient(420px circle at ${spot.x}% ${spot.y}%, rgba(26,86,232,0.06), transparent 65%), white`
+          : "white",
         border: `1px solid ${hovered ? "rgba(26,86,232,0.4)" : "#e4e2dd"}`,
         boxShadow: hovered ? "0 12px 32px rgba(26,86,232,0.12)" : "0 2px 10px rgba(0,0,0,0.04)",
         transform: hovered ? "translateY(-4px)" : "translateY(0)",
-        transition: "all 0.28s cubic-bezier(0.16, 1, 0.3, 1)",
+        transition: "border 0.28s, box-shadow 0.28s, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)",
         transitionDelay: `${index * 40}ms`,
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onMouseMove={(e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        setSpot({ x: ((e.clientX - r.left) / r.width) * 100, y: ((e.clientY - r.top) / r.height) * 100 });
+      }}
     >
       <div className="flex items-center justify-between mb-5">
         <div

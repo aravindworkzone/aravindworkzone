@@ -76,7 +76,7 @@ export default function ContactModal({ onClose }) {
               <Field label="Name" name="name" type="text" placeholder="Your name" value={form.name} onChange={handleChange} />
               <Field label="Email" name="email" type="email" placeholder="your@email.com" value={form.email} onChange={handleChange} />
               <div>
-                <label style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#b8b5ae", letterSpacing: "0.1em", textTransform: "uppercase", display: "block", marginBottom: 8 }}>
+                <label style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#7d7a72", letterSpacing: "0.1em", textTransform: "uppercase", display: "block", marginBottom: 8 }}>
                   Message
                 </label>
                 <textarea
@@ -118,7 +118,7 @@ export default function ContactModal({ onClose }) {
 function Field({ label, name, type, placeholder, value, onChange }) {
   return (
     <div>
-      <label style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#b8b5ae", letterSpacing: "0.1em", textTransform: "uppercase", display: "block", marginBottom: 8 }}>
+      <label style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#7d7a72", letterSpacing: "0.1em", textTransform: "uppercase", display: "block", marginBottom: 8 }}>
         {label}
       </label>
       <input
@@ -142,7 +142,7 @@ function SubmitBtn({ onClick, loading, disabled }) {
       className="w-full py-3 rounded-lg text-[14px] font-semibold border-none cursor-pointer transition-all duration-200"
       style={{
         background: disabled ? "#e4e2dd" : "#111110",
-        color: disabled ? "#b8b5ae" : "#fafaf8",
+        color: disabled ? "#7d7a72" : "#fafaf8",
         transform: hovered && !disabled ? "translateY(-1px)" : "none",
         boxShadow: hovered && !disabled ? "0 4px 14px rgba(0,0,0,0.15)" : "none",
         cursor: disabled ? "not-allowed" : "pointer",

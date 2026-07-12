@@ -4,9 +4,44 @@ import useReveal from "../hooks/useReveal";
 
 const projects = [
   {
+    id: "arkalyn",
+    name: "Arkalyn Kitty",
+    featured: true,
+    tagline: "Group expense management with role-based access control",
+    badge: "Fintech · Live",
+    meta: "Group wallet · Full-stack · TypeScript",
+    description:
+      "A production-oriented group wallet system built on a pooled balance model. Members contribute to a shared pool, expenses are deducted, and every mutation is logged — financial integrity enforced at every layer.",
+    stats: [
+      { val: "4", label: "Role tiers" },
+      { val: "3", label: "Deployables" },
+      { val: "₹", label: "Paise-precise" },
+      { val: "7", label: "MCP tools" },
+    ],
+    arch: [
+      "Pooled wallet model",
+      "4-tier RBAC (Member / Admin / SuperAdmin / AppOwner)",
+      "HMAC-verified Razorpay webhooks",
+      "Idempotent payment locks",
+      "Atomic overspend guard",
+      "Integer-paise money storage (zero float drift)",
+      "Append-only ledger (CREDIT/DEBIT/REFUND)",
+      "3-package monorepo (backend/frontend/MCP)",
+      "Rotating refresh tokens + device cap",
+      "Zod + Mongoose double-layer validation",
+    ],
+    tech: ["React", "Vite", "Tailwind CSS v4", "Redux Toolkit", "RTK Query", "Node.js", "Express", "TypeScript", "MongoDB"],
+    live: "https://arkalynkitty-fin.vercel.app",
+    repo: "https://github.com/aravindworkzone/Arkalayn-kitty",
+    host: "arkalynkitty-fin.vercel.app",
+    // TODO: replace with a live screenshot of arkalynkitty-fin.vercel.app —
+    // no screenshot exists in the Arkalyn Kitty repo yet.
+    img: "/arkalyn-kitty.png",
+    alt: "Arkalyn Kitty landing page — shared group wallet for expenses",
+  },
+  {
     id: "workzone",
     name: "WorkZone",
-    featured: true,
     tagline: "AI-powered goal-to-routine productivity SaaS",
     badge: "SaaS · Live",
     meta: "Productivity platform · Full-stack · AI-integrated",
@@ -22,42 +57,19 @@ const projects = [
       "JWT + HTTP-only cookies",
       "Refresh token rotation",
       "Refresh Token Reuse Detection",
+      "SHA-256 hashed refresh tokens",
+      "3-device cap, oldest evicted",
+      "401/403 error separation",
       "AI routine generation (Gemini)",
       "Goal → Routine → Today pipeline",
       "RTK Query caching",
-      "Session Limitation",
     ],
     tech: ["React", "Vite", "Tailwind CSS", "Redux Toolkit", "RTK Query", "Node.js", "Express", "MongoDB", "Gemini AI"],
     live: "https://workzone-todo.vercel.app",
     repo: "https://github.com/aravindworkzone/Workzone",
     host: "workzone-todo.vercel.app",
-  },
-  {
-    id: "arkalayn",
-    name: "Arkalayn Kitty",
-    tagline: "Group expense management with role-based access control",
-    badge: "Fintech · Live",
-    meta: "Group wallet · Full-stack · TypeScript",
-    description:
-      "A production-oriented group wallet system built on a pooled balance model. Members contribute to a shared pool, expenses are deducted, and every mutation is logged — financial integrity enforced at every layer.",
-    stats: [
-      { val: "3", label: "RBAC tiers" },
-      { val: "0", label: "Negative balance" },
-      { val: "TS", label: "Typed" },
-      { val: "∞", label: "Audit log" },
-    ],
-    arch: [
-      "Pooled wallet model",
-      "3-tier RBAC (Member / Admin / Super Admin)",
-      "Middleware-level role enforcement",
-      "Server-side balance validation",
-      "Immutable expenses (no PATCH)",
-      "Atomic balance updates",
-    ],
-    tech: ["React", "Vite", "Tailwind CSS v4", "Redux Toolkit", "RTK Query", "Node.js", "Express", "TypeScript", "MongoDB"],
-    live: "https://arkalynkitty-fin.vercel.app",
-    repo: "https://github.com/aravindworkzone/Arkalayn-kitty",
-    host: "arkalynkitty-fin.vercel.app",
+    img: "/workzone.png",
+    alt: "WorkZone dashboard — daily tasks, routines and productivity tracking",
   },
 ];
 
@@ -110,6 +122,54 @@ function ProjectCard({ p, hovered, setHovered, index }) {
       >
         <BrowserBar host={p.host} />
 
+        <a
+          href={p.live}
+          target="_blank"
+          rel="noreferrer"
+          className="relative block overflow-hidden"
+          style={{ borderBottom: "1px solid #e4e2dd", background: "#111110" }}
+          aria-label={`Open ${p.name} live site`}
+        >
+          <img
+            src={p.img}
+            alt={p.alt}
+            loading="lazy"
+            className="w-full block"
+            style={{
+              aspectRatio: "2.4 / 1",
+              objectFit: "cover",
+              objectPosition: "top",
+              transform: hovered === p.id ? "scale(1.025)" : "scale(1)",
+              transition: "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
+          />
+          <div
+            className="absolute inset-0 flex items-end justify-center pb-5 pointer-events-none"
+            style={{
+              background: "linear-gradient(to top, rgba(17,17,16,0.55), transparent 45%)",
+              opacity: hovered === p.id ? 1 : 0,
+              transition: "opacity 0.3s ease",
+            }}
+          >
+            <span
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-[12px] font-semibold"
+              style={{
+                background: "#fafaf8",
+                color: "#111110",
+                boxShadow: "0 4px 16px rgba(0,0,0,0.25)",
+                transform: hovered === p.id ? "translateY(0)" : "translateY(10px)",
+                transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
+            >
+              Open live site
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 17L17 7" />
+                <path d="M7 7h10v10" />
+              </svg>
+            </span>
+          </div>
+        </a>
+
         <div className="p-7 md:p-11">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-5 mb-7">
             <div>
@@ -150,7 +210,7 @@ function ProjectCard({ p, hovered, setHovered, index }) {
                   </span>
                 )}
               </div>
-              <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 12, color: "#b8b5ae" }}>
+              <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 12, color: "#7d7a72" }}>
                 {p.meta}
               </span>
             </div>
@@ -183,7 +243,7 @@ function ProjectCard({ p, hovered, setHovered, index }) {
                   style={{
                     fontFamily: "'DM Mono',monospace",
                     fontSize: 10,
-                    color: "#b8b5ae",
+                    color: "#7d7a72",
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                   }}
@@ -200,7 +260,7 @@ function ProjectCard({ p, hovered, setHovered, index }) {
             style={{
               fontFamily: "'DM Mono',monospace",
               fontSize: 10,
-              color: "#b8b5ae",
+              color: "#7d7a72",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               marginBottom: 10,
@@ -270,7 +330,7 @@ export default function Projects() {
           >
             Selected projects
           </h2>
-          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#b8b5ae", letterSpacing: "0.08em" }}>
+          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#7d7a72", letterSpacing: "0.08em" }}>
             02 / shipped work
           </span>
         </div>

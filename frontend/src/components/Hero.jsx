@@ -34,6 +34,7 @@ export function Btn({ children, onClick, href, variant = "dark" }) {
 const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
 export default function Hero() {
+  const [tilt, setTilt] = useState({ x: 0, y: 0, resting: true });
   return (
     <section
       id="home"
@@ -125,13 +126,26 @@ export default function Hero() {
 
         {/* Avatar / ID card */}
         <div
-          className="rounded-2xl p-6 md:p-7 w-full md:min-w-[260px]"
+          className="w-full md:min-w-[260px]"
+          style={{ animation: "fadeUp 0.7s ease 0.35s both", perspective: 700 }}
+        >
+        <div
+          className="rounded-2xl p-6 md:p-7 w-full"
           style={{
             background: "white",
             border: "1px solid #e4e2dd",
             boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
-            animation: "fadeUp 0.7s ease 0.35s both",
+            transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+            transition: tilt.resting ? "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)" : "transform 0.12s ease-out",
+            willChange: "transform",
           }}
+          onMouseMove={(e) => {
+            const r = e.currentTarget.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width - 0.5;
+            const py = (e.clientY - r.top) / r.height - 0.5;
+            setTilt({ x: -py * 7, y: px * 7, resting: false });
+          }}
+          onMouseLeave={() => setTilt({ x: 0, y: 0, resting: true })}
         >
           <div className="flex items-center gap-3 mb-5 pb-5" style={{ borderBottom: "1px solid #e4e2dd" }}>
             <div
@@ -174,6 +188,7 @@ export default function Hero() {
               <span style={{ fontSize: 13, fontWeight: 600, color: row.color, textAlign: "right" }}>{row.val}</span>
             </div>
           ))}
+        </div>
         </div>
       </div>
     </section>
