@@ -5,45 +5,48 @@ const items = [
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="5" width="20" height="14" rx="2" />
+        <path d="M2 10h20" />
+      </svg>
+    ),
+    title: "Money-safe by design",
+    body: "Razorpay payments hardened with HMAC webhook verification, idempotent payment locks, and an atomic overspend guard — no double-charges, no negative balance, even under concurrent requests.",
+    tag: "Arkalyn Kitty",
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         <path d="M9 12l2 2 4-4" />
       </svg>
     ),
-    title: "Security-first auth",
-    body: "JWT with HTTP-only cookies, refresh token rotation, and reuse-detection that invalidates entire sessions on replay attacks.",
-    tag: "WorkZone",
+    title: "Auth that survives attacks",
+    body: "JWT in HTTP-only cookies, rotating refresh tokens with reuse detection, and a 3-device session cap — one replayed token kills the whole session.",
+    tag: "WorkZone + Arkalyn",
   },
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="4" width="18" height="16" rx="2" />
-        <path d="M3 10h18" />
-        <path d="M8 14h3M8 17h6" />
+        <path d="M12 3l1.9 5.1a2 2 0 0 0 1.2 1.2L20.2 11l-5.1 1.9a2 2 0 0 0-1.2 1.2L12 19.2l-1.9-5.1a2 2 0 0 0-1.2-1.2L3.8 11l5.1-1.9a2 2 0 0 0 1.2-1.2L12 3z" />
+        <path d="M19 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8z" />
       </svg>
     ),
-    title: "RBAC at middleware layer",
-    body: "3-tier role hierarchy (Member / Admin / Super Admin) enforced server-side with atomic balance updates — no negative pool, no race conditions.",
-    tag: "Arkalayn Kitty",
+    title: "I build AI tooling, not just call it",
+    body: "A 7-tool MCP server on Render that lets an AI assistant query live app data, plus Gemini generation locked to strict JSON contracts.",
+    tag: "MCP · Gemini",
   },
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+        <path d="M6 3v12" />
+        <circle cx="18" cy="6" r="3" />
+        <circle cx="6" cy="18" r="3" />
+        <path d="M18 9a9 9 0 0 1-9 9" />
       </svg>
     ),
-    title: "AI integration that works",
-    body: "Gemini-powered routine generation with controlled prompts and strict JSON parsing — turns yearly goals into actionable daily plans.",
-    tag: "AI · Gemini",
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M5 12l5 5L20 7" />
-      </svg>
-    ),
-    title: "Shipped, not stuck in dev",
-    body: "Every project is publicly deployed — Vercel + Render. Real URLs. Real users could hit them right now. Not screenshots in a folder.",
-    tag: "2 live apps",
+    title: "Correct under concurrency",
+    body: "Atomic MongoDB mutations, a race-condition-safe session-rotation fix, and immutable audit logs — the quiet production killers, handled up front.",
+    tag: "Backend rigor",
   },
 ];
 
@@ -129,7 +132,7 @@ export default function Highlights() {
           >
             What I bring to the table
           </h2>
-          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#b8b5ae", letterSpacing: "0.08em" }}>
+          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#7d7a72", letterSpacing: "0.08em" }}>
             01 / why hire me
           </span>
         </div>
