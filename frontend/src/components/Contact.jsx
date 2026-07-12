@@ -58,9 +58,9 @@ function ContactRow({ icon, label, val, href, copyable }) {
       rel="noreferrer"
       className="flex items-center gap-4 px-5 py-4 rounded-xl no-underline"
       style={{
-        background: "white",
-        border: `1px solid ${hovered ? "#1a56e8" : "#e4e2dd"}`,
-        boxShadow: hovered ? "0 8px 20px rgba(26,86,232,0.12)" : "0 1px 4px rgba(0,0,0,0.04)",
+        background: "var(--card)",
+        border: `1px solid ${hovered ? "var(--accent)" : "var(--border)"}`,
+        boxShadow: hovered ? "var(--shadow-accent)" : "var(--shadow-card)",
         transform: hovered ? "translateX(5px)" : "translateX(0)",
         transition: "all 0.22s ease",
       }}
@@ -72,8 +72,8 @@ function ContactRow({ icon, label, val, href, copyable }) {
         style={{
           width: 38,
           height: 38,
-          background: hovered ? "#1a56e8" : "#eef2fd",
-          color: hovered ? "#fafaf8" : "#1a56e8",
+          background: hovered ? "var(--accent)" : "var(--accent-soft)",
+          color: hovered ? "var(--bg)" : "var(--accent)",
           transition: "all 0.22s ease",
         }}
       >
@@ -84,7 +84,7 @@ function ContactRow({ icon, label, val, href, copyable }) {
           style={{
             fontFamily: "'DM Mono',monospace",
             fontSize: 10,
-            color: "#7d7a72",
+            color: "var(--muted-2)",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
             marginBottom: 3,
@@ -92,7 +92,7 @@ function ContactRow({ icon, label, val, href, copyable }) {
         >
           {label}
         </div>
-        <div style={{ fontSize: 13, fontWeight: 600, color: "#111110" }} className="truncate">
+        <div style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)" }} className="truncate">
           {val}
         </div>
       </div>
@@ -105,8 +105,8 @@ function ContactRow({ icon, label, val, href, copyable }) {
           style={{
             width: 30,
             height: 30,
-            background: copied ? "#edf6f1" : "#f4f3ef",
-            color: copied ? "#1a7a4a" : "#6b6860",
+            background: copied ? "var(--green-soft)" : "var(--bg-alt)",
+            color: copied ? "var(--green)" : "var(--muted)",
             transition: "all 0.2s ease",
           }}
         >
@@ -124,7 +124,7 @@ function ContactRow({ icon, label, val, href, copyable }) {
       )}
       <span
         style={{
-          color: hovered ? "#1a56e8" : "#7d7a72",
+          color: hovered ? "var(--accent)" : "var(--muted-2)",
           fontSize: 18,
           transition: "all 0.22s ease",
           transform: hovered ? "translateX(2px)" : "translateX(0)",
@@ -145,7 +145,7 @@ export default function Contact() {
       <section
         id="contact"
         className="pt-12 pb-20 md:pt-16 md:pb-28 relative overflow-hidden"
-        style={{ background: "#f4f3ef", fontFamily: "'DM Sans', sans-serif" }}
+        style={{ background: "var(--bg-alt)", fontFamily: "'DM Sans', sans-serif" }}
       >
         <div
           aria-hidden
@@ -161,14 +161,14 @@ export default function Contact() {
             <div>
               <div
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6"
-                style={{ background: "#edf6f1", border: "1px solid rgba(26,122,74,0.18)" }}
+                style={{ background: "var(--green-soft)", border: "1px solid var(--green-border)" }}
               >
-                <span className="w-[7px] h-[7px] rounded-full bg-[#1a7a4a]" style={{ animation: "pulse 2.2s infinite" }} />
+                <span className="w-[7px] h-[7px] rounded-full bg-[color:var(--green)]" style={{ animation: "pulse 2.2s infinite" }} />
                 <span
                   style={{
                     fontFamily: "'DM Mono',monospace",
                     fontSize: 11,
-                    color: "#1a7a4a",
+                    color: "var(--green)",
                     letterSpacing: "0.06em",
                   }}
                 >
@@ -184,13 +184,13 @@ export default function Contact() {
                   fontWeight: 700,
                   lineHeight: 1.1,
                   letterSpacing: "-0.025em",
-                  color: "#111110",
+                  color: "var(--ink)",
                 }}
               >
                 Let's <em style={{ fontStyle: "italic" }} className="gradient-text">work</em><br />
                 together.
               </h2>
-              <p className="text-[15.5px] text-[#6b6860] leading-[1.8] mb-6 max-w-[400px]">
+              <p className="text-[15.5px] text-[color:var(--muted)] leading-[1.8] mb-6 max-w-[400px]">
                 Open to full-stack developer roles in product-focused companies. Send a message — I'll respond fast.
               </p>
 
@@ -203,20 +203,20 @@ export default function Contact() {
                   <div
                     key={row.k}
                     className="flex justify-between items-center pb-2"
-                    style={{ borderBottom: i < arr.length - 1 ? "1px solid #e4e2dd" : "none" }}
+                    style={{ borderBottom: i < arr.length - 1 ? "1px solid var(--border)" : "none" }}
                   >
                     <span
                       style={{
                         fontFamily: "'DM Mono',monospace",
                         fontSize: 10,
-                        color: "#7d7a72",
+                        color: "var(--muted-2)",
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
                       }}
                     >
                       {row.k}
                     </span>
-                    <span style={{ fontSize: 13, fontWeight: 600, color: "#111110" }}>{row.v}</span>
+                    <span style={{ fontSize: 13, fontWeight: 600, color: "var(--ink)" }}>{row.v}</span>
                   </div>
                 ))}
               </div>
@@ -231,7 +231,7 @@ export default function Contact() {
                 style={{
                   fontFamily: "'DM Mono',monospace",
                   fontSize: 10,
-                  color: "#7d7a72",
+                  color: "var(--muted-2)",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                 }}

@@ -1,5 +1,74 @@
 @import "tailwindcss";
 
+/* ---------- Design tokens ---------- */
+:root {
+  color-scheme: light;
+
+  --bg: #fafaf8;
+  --bg-alt: #f4f3ef;
+  --card: white;
+  --border: #e4e2dd;
+  --ink: #111110;
+  --muted: #6b6860;
+  --muted-2: #7d7a72;
+  --muted-3: #8a877f;
+
+  --accent: #1a56e8;
+  --accent-2: #4f7fff;
+  --accent-soft: #eef2fd;
+  --accent-border: rgba(26, 86, 232, 0.2);
+
+  --green: #1a7a4a;
+  --green-soft: #edf6f1;
+  --green-border: rgba(26, 122, 74, 0.18);
+
+  --error: #dc2626;
+  --nav-bg: rgba(250, 250, 248, 0.92);
+  --overlay: rgba(0, 0, 0, 0.35);
+  --scroll-thumb: #c8c6bf;
+
+  /* Layered depth (light) */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 2px 6px rgba(0, 0, 0, 0.06), 0 18px 44px rgba(0, 0, 0, 0.13);
+  --shadow-accent: 0 12px 32px rgba(26, 86, 232, 0.12);
+
+  --grain-opacity: 0.03;
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --bg: #161514;
+  --bg-alt: #1d1b19;
+  --card: #211f1c;
+  --border: #2e2b27;
+  --ink: #f2f0ec;
+  --muted: #a8a49b;
+  --muted-2: #8f8b82;
+  --muted-3: #85817a;
+
+  --accent: #5b86ff;
+  --accent-2: #7da2ff;
+  --accent-soft: #1b2233;
+  --accent-border: rgba(91, 134, 255, 0.35);
+
+  --green: #4cc38a;
+  --green-soft: #14251c;
+  --green-border: rgba(76, 195, 138, 0.3);
+
+  --error: #f87171;
+  --nav-bg: rgba(22, 21, 20, 0.9);
+  --overlay: rgba(0, 0, 0, 0.6);
+  --scroll-thumb: #3a3733;
+
+  /* Layered depth (dark) */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 28px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 2px 6px rgba(0, 0, 0, 0.5), 0 22px 52px rgba(0, 0, 0, 0.6);
+  --shadow-accent: 0 12px 32px rgba(91, 134, 255, 0.15);
+
+  --grain-opacity: 0.05;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
@@ -13,17 +82,30 @@ html {
 }
 
 body {
-  background: #fafaf8;
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease;
 }
 
-::selection { background: #1a56e8; color: #fafaf8; }
+/* Film-grain overlay — sits above content, non-interactive, nearly invisible */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
 
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #fafaf8; }
-::-webkit-scrollbar-thumb { background: #c8c6bf; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #1a56e8; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(22px); }
@@ -57,7 +139,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #1a56e8 0%, #4f7fff 50%, #1a56e8 100%);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 50%, var(--accent) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;

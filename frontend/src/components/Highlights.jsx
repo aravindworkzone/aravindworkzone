@@ -31,9 +31,9 @@ const items = [
         <path d="M19 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8z" />
       </svg>
     ),
-    title: "I build AI tooling, not just call it",
+    title: "I build AI tooling",
     body: "A 7-tool MCP server on Render that lets an AI assistant query live app data, plus Gemini generation locked to strict JSON contracts.",
-    tag: "MCP · Gemini",
+    tag: "MCP · AI assistant",
   },
   {
     icon: (
@@ -58,10 +58,10 @@ function Card({ item, index }) {
       className="rounded-2xl p-6 md:p-7 cursor-default h-full"
       style={{
         background: hovered
-          ? `radial-gradient(420px circle at ${spot.x}% ${spot.y}%, rgba(26,86,232,0.06), transparent 65%), white`
-          : "white",
-        border: `1px solid ${hovered ? "rgba(26,86,232,0.4)" : "#e4e2dd"}`,
-        boxShadow: hovered ? "0 12px 32px rgba(26,86,232,0.12)" : "0 2px 10px rgba(0,0,0,0.04)",
+          ? `radial-gradient(420px circle at ${spot.x}% ${spot.y}%, rgba(26,86,232,0.06), transparent 65%), var(--card)`
+          : "var(--card)",
+        border: `1px solid ${hovered ? "rgba(26,86,232,0.4)" : "var(--border)"}`,
+        boxShadow: hovered ? "var(--shadow-accent)" : "var(--shadow-card)",
         transform: hovered ? "translateY(-4px)" : "translateY(0)",
         transition: "border 0.28s, box-shadow 0.28s, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)",
         transitionDelay: `${index * 40}ms`,
@@ -79,8 +79,8 @@ function Card({ item, index }) {
           style={{
             width: 44,
             height: 44,
-            background: hovered ? "#1a56e8" : "#eef2fd",
-            color: hovered ? "#fafaf8" : "#1a56e8",
+            background: hovered ? "var(--accent)" : "var(--accent-soft)",
+            color: hovered ? "var(--bg)" : "var(--accent)",
             transition: "all 0.25s ease",
           }}
         >
@@ -91,9 +91,9 @@ function Card({ item, index }) {
           style={{
             fontFamily: "'DM Mono',monospace",
             fontSize: 10,
-            color: "#6b6860",
-            background: "#f4f3ef",
-            border: "1px solid #e4e2dd",
+            color: "var(--muted)",
+            background: "var(--bg-alt)",
+            border: "1px solid var(--border)",
             letterSpacing: "0.04em",
           }}
         >
@@ -105,7 +105,7 @@ function Card({ item, index }) {
           fontFamily: "'Lora', Georgia, serif",
           fontSize: 19,
           fontWeight: 700,
-          color: "#111110",
+          color: "var(--ink)",
           letterSpacing: "-0.015em",
           marginBottom: 8,
           lineHeight: 1.3,
@@ -113,7 +113,7 @@ function Card({ item, index }) {
       >
         {item.title}
       </h3>
-      <p className="text-[14px] text-[#6b6860] leading-[1.65]">{item.body}</p>
+      <p className="text-[14px] text-[color:var(--muted)] leading-[1.65]">{item.body}</p>
     </div>
   );
 }
@@ -124,7 +124,7 @@ export default function Highlights() {
     <section
       id="highlights"
       className="py-20 md:py-24"
-      style={{ background: "#fafaf8", fontFamily: "'DM Sans', sans-serif" }}
+      style={{ background: "var(--bg)", fontFamily: "'DM Sans', sans-serif" }}
     >
       <div className="max-w-[1000px] mx-auto px-6 md:px-16" ref={reveal.ref}>
         <div className={`flex items-baseline justify-between mb-10 md:mb-12 ${reveal.className}`}>
@@ -133,13 +133,13 @@ export default function Highlights() {
               fontFamily: "'Lora', Georgia, serif",
               fontSize: "clamp(22px, 2.8vw, 30px)",
               fontWeight: 700,
-              color: "#111110",
+              color: "var(--ink)",
               letterSpacing: "-0.02em",
             }}
           >
             What I bring to the table
           </h2>
-          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#7d7a72", letterSpacing: "0.08em" }}>
+          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "var(--muted-2)", letterSpacing: "0.08em" }}>
             01 / why hire me
           </span>
         </div>

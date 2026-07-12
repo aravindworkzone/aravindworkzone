@@ -15,9 +15,9 @@ export function Btn({ children, onClick, href, variant = "dark" }) {
   };
 
   const styles = {
-    dark: { ...base, background: "#111110", color: "#fafaf8", boxShadow: hovered ? "0 6px 20px rgba(0,0,0,0.18)" : "0 1px 3px rgba(0,0,0,0.12)" },
-    border: { ...base, background: hovered ? "#f4f3ef" : "transparent", color: "#111110", border: `1.5px solid ${hovered ? "#111110" : "#e4e2dd"}` },
-    accent: { ...base, background: "#1a56e8", color: "#fff", opacity: hovered ? 0.93 : 1, boxShadow: hovered ? "0 6px 20px rgba(26,86,232,0.35)" : "0 1px 3px rgba(26,86,232,0.2)" },
+    dark: { ...base, background: "var(--ink)", color: "var(--bg)", boxShadow: hovered ? "0 6px 20px rgba(0,0,0,0.18)" : "0 1px 3px rgba(0,0,0,0.12)" },
+    border: { ...base, background: hovered ? "var(--bg-alt)" : "transparent", color: "var(--ink)", border: `1.5px solid ${hovered ? "var(--ink)" : "var(--border)"}` },
+    accent: { ...base, background: "var(--accent)", color: "#fff", opacity: hovered ? 0.93 : 1, boxShadow: hovered ? "0 6px 20px rgba(26,86,232,0.35)" : "0 1px 3px rgba(26,86,232,0.2)" },
   };
 
   const handleClick = () => { setClicked(true); setTimeout(() => setClicked(false), 260); onClick?.(); };
@@ -34,6 +34,51 @@ export function Btn({ children, onClick, href, variant = "dark" }) {
 
 const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
+function InfoDot({ text }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <span className="relative inline-flex">
+      <button
+        type="button"
+        aria-label={text}
+        onClick={() => setOpen((o) => !o)}
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+        className="flex items-center justify-center rounded-full cursor-pointer"
+        style={{
+          width: 18,
+          height: 18,
+          padding: 0,
+          background: "var(--accent-soft)",
+          border: "1px solid var(--accent-border)",
+          color: "var(--accent)",
+          fontFamily: "'DM Mono',monospace",
+          fontSize: 10.5,
+          lineHeight: 1,
+        }}
+      >
+        i
+      </button>
+      {open && (
+        <span
+          className="absolute left-1/2 bottom-full mb-2 -translate-x-1/2 whitespace-nowrap px-3 py-1.5 rounded-md pointer-events-none"
+          style={{
+            fontFamily: "'DM Mono',monospace",
+            fontSize: 10.5,
+            letterSpacing: "0.04em",
+            background: "var(--ink)",
+            color: "var(--bg)",
+            boxShadow: "0 4px 14px rgba(0,0,0,0.18)",
+            zIndex: 20,
+          }}
+        >
+          {text}
+        </span>
+      )}
+    </span>
+  );
+}
+
 export default function Hero() {
   const [tilt, setTilt] = useState({ x: 0, y: 0, resting: true });
   const resume = useResumeMeta();
@@ -41,7 +86,7 @@ export default function Hero() {
     <section
       id="home"
       className="min-h-screen flex items-center pt-[62px] relative overflow-hidden"
-      style={{ background: "#fafaf8", fontFamily: "'DM Sans', sans-serif" }}
+      style={{ background: "var(--bg)", fontFamily: "'DM Sans', sans-serif" }}
     >
       {/* Subtle background mesh */}
       <div
@@ -61,10 +106,10 @@ export default function Hero() {
         <div>
           <div
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-8"
-            style={{ background: "#edf6f1", border: "1px solid rgba(26,122,74,0.18)", animation: "fadeUp 0.5s ease both" }}
+            style={{ background: "var(--green-soft)", border: "1px solid var(--green-border)", animation: "fadeUp 0.5s ease both" }}
           >
-            <span className="w-[7px] h-[7px] rounded-full bg-[#1a7a4a]" style={{ animation: "pulse 2.2s infinite" }} />
-            <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#1a7a4a", letterSpacing: "0.06em" }}>
+            <span className="w-[7px] h-[7px] rounded-full bg-[color:var(--green)]" style={{ animation: "pulse 2.2s infinite" }} />
+            <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "var(--green)", letterSpacing: "0.06em" }}>
               Available · Replies within 24 hrs
             </span>
           </div>
@@ -77,47 +122,40 @@ export default function Hero() {
               fontWeight: 700,
               lineHeight: 1.05,
               letterSpacing: "-0.025em",
-              color: "#111110",
+              color: "var(--ink)",
               animation: "fadeUp 0.6s ease 0.1s both",
             }}
           >
             Full-Stack<br />
             <em style={{ fontStyle: "italic" }} className="gradient-text">MERN</em> Developer<br />
-            <span style={{ color: "#6b6860", fontWeight: 600, fontSize: "0.62em" }}>
+            <span style={{ color: "var(--muted)", fontWeight: 600, fontSize: "0.62em" }}>
               who ships to production.
             </span>
           </h1>
 
           <p
             className="mb-8 max-w-[480px]"
-            style={{ fontSize: 16.5, color: "#6b6860", lineHeight: 1.75, animation: "fadeUp 0.6s ease 0.2s both" }}
+            style={{ fontSize: 16.5, color: "var(--muted)", lineHeight: 1.75, animation: "fadeUp 0.6s ease 0.2s both" }}
           >
             I build production-grade web apps —{" "}
-            <span style={{ color: "#111110", fontWeight: 600 }}>secure auth</span>,{" "}
-            <span style={{ color: "#111110", fontWeight: 600 }}>payment integrity</span>, and{" "}
-            <span style={{ color: "#111110", fontWeight: 600 }}>AI-native tooling</span> that hold up under real users, not just in a demo.
+            <span style={{ color: "var(--ink)", fontWeight: 600 }}>secure auth</span>,{" "}
+            <span style={{ color: "var(--ink)", fontWeight: 600 }}>payment integrity</span>, and{" "}
+            <span style={{ color: "var(--ink)", fontWeight: 600 }}>AI-native tooling</span> that hold up under real users, not just in a demo.
           </p>
 
           <div className="flex gap-3 flex-wrap items-start" style={{ animation: "fadeUp 0.6s ease 0.3s both" }}>
             <Btn variant="dark" onClick={() => scrollTo("projects")}>View Projects →</Btn>
             <Btn variant="border" onClick={() => scrollTo("contact")}>Contact Me</Btn>
-            <div className="flex flex-col items-center gap-1.5">
+          </div>
+          <div className="flex gap-3 flex-wrap items-start mt-4" style={{ animation: "fadeUp 0.6s ease 0.3s both" }}>
+            <div className="flex items-center gap-2">
               <Btn variant="border" href={resume.downloadUrl}>Resume ↓</Btn>
               {resume.updated && (
-                <span
-                  style={{
-                    fontFamily: "'DM Mono',monospace",
-                    fontSize: 10,
-                    color: "#8a877f",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Updated {resume.updated}
-                </span>
+                <InfoDot text={`Resume last Updated on ${resume.updated} · via Google Drive`} />
               )}
             </div>
           </div>
+
 
           {/* Trust strip */}
           <div
@@ -131,10 +169,10 @@ export default function Hero() {
               { label: "Notice", val: "30 days" },
             ].map((t) => (
               <div key={t.label} className="flex items-baseline gap-2">
-                <span style={{ fontFamily: "'Lora', Georgia, serif", fontSize: 18, fontWeight: 700, color: "#111110" }}>
+                <span style={{ fontFamily: "'Lora', Georgia, serif", fontSize: 18, fontWeight: 700, color: "var(--ink)" }}>
                   {t.val}
                 </span>
-                <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#7d7a72", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "var(--muted-2)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
                   {t.label}
                 </span>
               </div>
@@ -150,9 +188,9 @@ export default function Hero() {
         <div
           className="rounded-2xl p-6 md:p-7 w-full"
           style={{
-            background: "white",
-            border: "1px solid #e4e2dd",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+            background: "var(--card)",
+            border: "1px solid var(--border)",
+            boxShadow: "var(--shadow-card)",
             transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
             transition: tilt.resting ? "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)" : "transform 0.12s ease-out",
             willChange: "transform",
@@ -165,40 +203,39 @@ export default function Hero() {
           }}
           onMouseLeave={() => setTilt({ x: 0, y: 0, resting: true })}
         >
-          <div className="flex items-center gap-3 mb-5 pb-5" style={{ borderBottom: "1px solid #e4e2dd" }}>
-            {/* place avatar.jpg in frontend/public/ */}
+          <div className="flex items-center gap-3 mb-5 pb-5" style={{ borderBottom: "1px solid var(--border)" }}>
             <img
-              src="/avatar.jpg"
+              src="/avatar.png"
               alt="Aravind A"
-              className="rounded-xl flex-shrink-0"
+              className="rounded-full flex-shrink-0"
               style={{
-                width: 44,
-                height: 44,
+                width: 64,
+                height: 64,
                 objectFit: "cover",
-                boxShadow: "0 4px 14px rgba(26,86,232,0.35)",
+                border: "2px solid var(--card)",
+                boxShadow: "0 4px 14px rgba(26,86,232,0.35), 0 0 0 2px rgba(26,86,232,0.25)",
               }}
             />
             <div className="min-w-0">
-              <div style={{ fontSize: 14, fontWeight: 700, color: "#111110", lineHeight: 1.2 }}>Aravind A</div>
-              <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10.5, color: "#6b6860", letterSpacing: "0.04em" }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "var(--ink)", lineHeight: 1.2 }}>Aravind A</div>
+              <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10.5, color: "var(--muted)", letterSpacing: "0.04em" }}>
                 Tiruppur, India · MERN
               </div>
             </div>
           </div>
 
           {[
-            { label: "Role", val: "Full-Stack Dev", color: "#111110" },
-            { label: "Building", val: "Internal portal", color: "#1a56e8" },
-            { label: "Shipped", val: "2 SaaS, solo", color: "#111110" },
-            { label: "Response", val: "< 24 hours", color: "#111110" },
-            { label: "Status", val: "Open to work", color: "#1a7a4a" },
+            { label: "Role", val: "Full-Stack Dev", color: "var(--ink)" },
+            { label: "Shipped", val: "2 products, solo", color: "var(--ink)" },
+            { label: "Response", val: "< 24 hours", color: "var(--ink)" },
+            { label: "Status", val: "Open to work", color: "var(--green)" },
           ].map((row, i, arr) => (
             <div
               key={row.label}
               className="flex justify-between items-center py-3"
-              style={{ borderBottom: i < arr.length - 1 ? "1px solid #e4e2dd" : "none" }}
+              style={{ borderBottom: i < arr.length - 1 ? "1px solid var(--border)" : "none" }}
             >
-              <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#7d7a72", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "var(--muted-2)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
                 {row.label}
               </span>
               <span style={{ fontSize: 13, fontWeight: 600, color: row.color, textAlign: "right" }}>{row.val}</span>

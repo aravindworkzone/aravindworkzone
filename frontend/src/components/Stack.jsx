@@ -57,7 +57,6 @@ const groups = [
     label: "Frontend",
     items: [
       { icon: <BrandIcon path={brandPaths.react} color="#087EA4" />, name: "React" },
-      { icon: <BrandIcon path={brandPaths.vite} color="#646CFF" />, name: "Vite" },
       { icon: <BrandIcon path={brandPaths.tailwind} color="#06B6D4" />, name: "Tailwind CSS" },
       { icon: <BrandIcon path={brandPaths.redux} color="#764ABC" />, name: "Redux Toolkit" },
       { icon: <BrandIcon path={brandPaths.redux} color="#764ABC" />, name: "RTK Query" },
@@ -68,10 +67,10 @@ const groups = [
     label: "Backend",
     items: [
       { icon: <BrandIcon path={brandPaths.node} color="#5FA04E" />, name: "Node.js" },
-      { icon: <BrandIcon path={brandPaths.express} color="#111110" />, name: "Express" },
+      { icon: <BrandIcon path={brandPaths.express} color="var(--ink)" />, name: "Express" },
       {
         icon: (
-          <StrokeIcon color="#1a56e8">
+          <StrokeIcon color="var(--accent)">
             <path d="M8 6l-6 6 6 6" />
             <path d="M16 6l6 6-6 6" />
           </StrokeIcon>
@@ -81,7 +80,7 @@ const groups = [
       { icon: <BrandIcon path={brandPaths.jwt} color="#D63AFF" />, name: "JWT Auth" },
       {
         icon: (
-          <StrokeIcon color="#1a56e8">
+          <StrokeIcon color="var(--accent)">
             <path d="M21 12a9 9 0 1 1-2.64-6.36" />
             <path d="M21 3v6h-6" />
           </StrokeIcon>
@@ -101,9 +100,9 @@ const groups = [
     label: "Tools & Deployment",
     items: [
       { icon: <BrandIcon path={brandPaths.git} color="#F05032" />, name: "Git" },
-      { icon: <BrandIcon path={brandPaths.github} color="#181717" />, name: "GitHub" },
-      { icon: <BrandIcon path={brandPaths.vercel} color="#111110" />, name: "Vercel" },
-      { icon: <BrandIcon path={brandPaths.render} color="#111110" />, name: "Render" },
+      { icon: <BrandIcon path={brandPaths.github} color="var(--ink)" />, name: "GitHub" },
+      { icon: <BrandIcon path={brandPaths.vercel} color="var(--ink)" />, name: "Vercel" },
+      { icon: <BrandIcon path={brandPaths.render} color="var(--ink)" />, name: "Render" },
       {
         icon: (
           <StrokeIcon color="#F0642F">
@@ -126,7 +125,7 @@ function Group({ group, index }) {
       style={{ transitionDelay: `${index * 90}ms` }}
     >
       <span className="block mb-3.5"
-        style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#7d7a72", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+        style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "var(--muted-2)", letterSpacing: "0.12em", textTransform: "uppercase" }}>
         {group.label}
       </span>
       <div className="flex flex-wrap gap-2.5">
@@ -142,8 +141,8 @@ function Pill({ icon, name }) {
     <div
       className="flex items-center gap-2.5 px-4 py-2.5 rounded-full cursor-default"
       style={{
-        background: hovered ? "#eef2fd" : "white",
-        border: `1.5px solid ${hovered ? "#1a56e8" : "#e4e2dd"}`,
+        background: hovered ? "var(--accent-soft)" : "var(--card)",
+        border: `1.5px solid ${hovered ? "var(--accent)" : "var(--border)"}`,
         boxShadow: hovered ? "0 4px 12px rgba(26,86,232,0.1)" : "0 1px 3px rgba(0,0,0,0.04)",
         transform: hovered ? "translateY(-2px)" : "translateY(0)",
         transition: "all 0.2s ease",
@@ -151,7 +150,7 @@ function Pill({ icon, name }) {
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
     >
       {icon}
-      <span className="text-[13px] font-medium" style={{ color: hovered ? "#1a56e8" : "#111110" }}>{name}</span>
+      <span className="text-[13px] font-medium" style={{ color: hovered ? "var(--accent)" : "var(--ink)" }}>{name}</span>
     </div>
   );
 }
@@ -159,14 +158,14 @@ function Pill({ icon, name }) {
 export default function Stack() {
   const reveal = useReveal();
   return (
-    <section id="skills" className="py-20 md:py-28" style={{ background: "#fafaf8", fontFamily: "'DM Sans', sans-serif" }}>
+    <section id="skills" className="py-20 md:py-28" style={{ background: "var(--bg)", fontFamily: "'DM Sans', sans-serif" }}>
       <div className="max-w-[1000px] mx-auto px-6 md:px-16" ref={reveal.ref}>
 
         <div className={`flex items-baseline justify-between mb-10 md:mb-12 ${reveal.className}`}>
-          <h2 style={{ fontFamily: "'Lora', Georgia, serif", fontSize: "clamp(22px, 2.8vw, 30px)", fontWeight: 700, color: "#111110", letterSpacing: "-0.02em" }}>
+          <h2 style={{ fontFamily: "'Lora', Georgia, serif", fontSize: "clamp(22px, 2.8vw, 30px)", fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em" }}>
             Stack
           </h2>
-          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#7d7a72", letterSpacing: "0.08em" }}>04 / tools I use</span>
+          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "var(--muted-2)", letterSpacing: "0.08em" }}>04 / tools I use</span>
         </div>
 
         {groups.map((g, i) => (

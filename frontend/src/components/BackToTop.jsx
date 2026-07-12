@@ -21,9 +21,9 @@ export default function BackToTop() {
       style={{
         width: 44,
         height: 44,
-        background: hovered ? "#1a56e8" : "white",
-        color: hovered ? "#fafaf8" : "#111110",
-        border: `1px solid ${hovered ? "#1a56e8" : "#e4e2dd"}`,
+        background: hovered ? "var(--accent)" : "var(--card)",
+        color: hovered ? "var(--bg)" : "var(--ink)",
+        border: `1px solid ${hovered ? "var(--accent)" : "var(--border)"}`,
         boxShadow: hovered ? "0 8px 24px rgba(26,86,232,0.3)" : "0 4px 16px rgba(0,0,0,0.1)",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(14px)",

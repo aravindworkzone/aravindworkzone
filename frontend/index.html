@@ -20,7 +20,21 @@
     <meta name="twitter:title" content="Aravind A — Full-Stack MERN Developer" />
     <meta name="twitter:description" content="Production-grade MERN apps. JWT rotation, RBAC, AI integration. 2 live deployed projects." />
 
-    <meta name="theme-color" content="#1a56e8" />
+    <meta name="theme-color" content="#fafaf8" />
+    <script>
+      // Set theme before first paint to avoid a flash of the wrong theme.
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (dark) {
+            document.documentElement.classList.add("dark");
+            var meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute("content", "#161514");
+          }
+        } catch (e) { /* no-op */ }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -128,10 +128,10 @@ function ToolCard({ t, index }) {
       <div
         className="p-6 md:p-7 h-full flex flex-col cursor-default"
         style={{
-          background: "white",
-          border: "1px solid #e4e2dd",
+          background: "var(--card)",
+          border: "1px solid var(--border)",
           borderRadius: 16,
-          boxShadow: hovered ? "0 16px 48px rgba(0,0,0,0.12)" : "0 2px 12px rgba(0,0,0,0.04)",
+          boxShadow: hovered ? "var(--shadow-card-hover)" : "var(--shadow-card)",
           transform: hovered ? "translateY(-4px)" : "translateY(0)",
           transition: "all 0.28s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
@@ -144,7 +144,7 @@ function ToolCard({ t, index }) {
               fontFamily: "'Lora', Georgia, serif",
               fontSize: 22,
               fontWeight: 700,
-              color: "#111110",
+              color: "var(--ink)",
               letterSpacing: "-0.02em",
             }}
           >
@@ -154,20 +154,20 @@ function ToolCard({ t, index }) {
             className="px-3 py-0.5 rounded-full text-[10px] font-medium tracking-wider"
             style={{
               fontFamily: "'DM Mono',monospace",
-              background: "#eef2fd",
-              border: "1px solid rgba(26,86,232,0.2)",
-              color: "#1a56e8",
+              background: "var(--accent-soft)",
+              border: "1px solid var(--accent-border)",
+              color: "var(--accent)",
             }}
           >
             {t.badge}
           </span>
         </div>
 
-        <p className="text-[14px] text-[#6b6860] leading-[1.7] mb-5">{t.description}</p>
+        <p className="text-[14px] text-[color:var(--muted)] leading-[1.7] mb-5">{t.description}</p>
 
         <div
           className="flex flex-wrap gap-x-6 gap-y-3 py-4 mb-5"
-          style={{ borderTop: "1px solid #e4e2dd", borderBottom: "1px solid #e4e2dd" }}
+          style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
         >
           {t.stats.map((s) => (
             <div key={s.label}>
@@ -177,7 +177,7 @@ function ToolCard({ t, index }) {
                   fontFamily: "'Lora', Georgia, serif",
                   fontSize: 20,
                   fontWeight: 700,
-                  color: "#111110",
+                  color: "var(--ink)",
                   letterSpacing: "-0.02em",
                   lineHeight: 1.1,
                 }}
@@ -188,7 +188,7 @@ function ToolCard({ t, index }) {
                 style={{
                   fontFamily: "'DM Mono',monospace",
                   fontSize: 10,
-                  color: "#7d7a72",
+                  color: "var(--muted-2)",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                 }}
@@ -206,9 +206,9 @@ function ToolCard({ t, index }) {
               className="px-3 py-1 rounded-full text-[11px] tracking-wide"
               style={{
                 fontFamily: "'DM Mono',monospace",
-                background: "#eef2fd",
-                border: "1px solid rgba(26,86,232,0.14)",
-                color: "#1a56e8",
+                background: "var(--accent-soft)",
+                border: "1px solid var(--accent-border)",
+                color: "var(--accent)",
               }}
             >
               {tag}
@@ -229,8 +229,8 @@ function BrowserBar({ host }) {
     <div
       className="flex items-center gap-2 px-4 py-2.5"
       style={{
-        background: "#f4f3ef",
-        borderBottom: "1px solid #e4e2dd",
+        background: "var(--bg-alt)",
+        borderBottom: "1px solid var(--border)",
         borderTopLeftRadius: 16,
         borderTopRightRadius: 16,
       }}
@@ -243,9 +243,9 @@ function BrowserBar({ host }) {
         style={{
           fontFamily: "'DM Mono',monospace",
           fontSize: 11,
-          color: "#6b6860",
-          background: "white",
-          border: "1px solid #e4e2dd",
+          color: "var(--muted)",
+          background: "var(--card)",
+          border: "1px solid var(--border)",
         }}
       >
         🔒 {host}
@@ -261,10 +261,10 @@ function ProjectCard({ p, hovered, setHovered, index }) {
       <div
         className="overflow-hidden mb-5 cursor-default"
         style={{
-          background: "white",
-          border: "1px solid #e4e2dd",
+          background: "var(--card)",
+          border: "1px solid var(--border)",
           borderRadius: 16,
-          boxShadow: hovered === p.id ? "0 16px 48px rgba(0,0,0,0.12)" : "0 2px 12px rgba(0,0,0,0.04)",
+          boxShadow: hovered === p.id ? "var(--shadow-card-hover)" : "var(--shadow-card)",
           transform: hovered === p.id ? "translateY(-4px)" : "translateY(0)",
           transition: "all 0.28s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
@@ -278,7 +278,7 @@ function ProjectCard({ p, hovered, setHovered, index }) {
           target="_blank"
           rel="noreferrer"
           className="relative block overflow-hidden"
-          style={{ borderBottom: "1px solid #e4e2dd", background: "#111110" }}
+          style={{ borderBottom: "1px solid var(--border)", background: "#111110" }}
           aria-label={`Open ${p.name} live site`}
         >
           <img
@@ -330,7 +330,7 @@ function ProjectCard({ p, hovered, setHovered, index }) {
                     fontFamily: "'Lora', Georgia, serif",
                     fontSize: "clamp(22px, 3vw, 34px)",
                     fontWeight: 700,
-                    color: "#111110",
+                    color: "var(--ink)",
                     letterSpacing: "-0.02em",
                   }}
                 >
@@ -340,9 +340,9 @@ function ProjectCard({ p, hovered, setHovered, index }) {
                   className="px-3 py-0.5 rounded-full text-[10px] font-medium tracking-wider"
                   style={{
                     fontFamily: "'DM Mono',monospace",
-                    background: "#eef2fd",
-                    border: "1px solid rgba(26,86,232,0.2)",
-                    color: "#1a56e8",
+                    background: "var(--accent-soft)",
+                    border: "1px solid var(--accent-border)",
+                    color: "var(--accent)",
                   }}
                 >
                   {p.badge}
@@ -352,7 +352,7 @@ function ProjectCard({ p, hovered, setHovered, index }) {
                     className="px-3 py-0.5 rounded-full text-[10px] font-semibold tracking-wider"
                     style={{
                       fontFamily: "'DM Mono',monospace",
-                      background: "linear-gradient(90deg, #1a56e8, #4f7fff)",
+                      background: "linear-gradient(90deg, var(--accent), var(--accent-2))",
                       color: "white",
                       letterSpacing: "0.08em",
                     }}
@@ -361,7 +361,7 @@ function ProjectCard({ p, hovered, setHovered, index }) {
                   </span>
                 )}
               </div>
-              <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 12, color: "#7d7a72" }}>
+              <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 12, color: "var(--muted-2)" }}>
                 {p.meta}
               </span>
             </div>
@@ -373,7 +373,7 @@ function ProjectCard({ p, hovered, setHovered, index }) {
 
           <div
             className="flex flex-wrap gap-6 md:gap-10 py-5 mb-6"
-            style={{ borderTop: "1px solid #e4e2dd", borderBottom: "1px solid #e4e2dd" }}
+            style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
           >
             {p.stats.map((s) => (
               <div key={s.label}>
@@ -383,7 +383,7 @@ function ProjectCard({ p, hovered, setHovered, index }) {
                     fontFamily: "'Lora', Georgia, serif",
                     fontSize: "clamp(20px,4vw,28px)",
                     fontWeight: 700,
-                    color: "#111110",
+                    color: "var(--ink)",
                     letterSpacing: "-0.02em",
                     lineHeight: 1.1,
                   }}
@@ -394,7 +394,7 @@ function ProjectCard({ p, hovered, setHovered, index }) {
                   style={{
                     fontFamily: "'DM Mono',monospace",
                     fontSize: 10,
-                    color: "#7d7a72",
+                    color: "var(--muted-2)",
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                   }}
@@ -405,13 +405,13 @@ function ProjectCard({ p, hovered, setHovered, index }) {
             ))}
           </div>
 
-          <p className="text-[15px] text-[#6b6860] leading-[1.8] mb-5 max-w-[640px]">{p.description}</p>
+          <p className="text-[15px] text-[color:var(--muted)] leading-[1.8] mb-5 max-w-[640px]">{p.description}</p>
 
           <p
             style={{
               fontFamily: "'DM Mono',monospace",
               fontSize: 10,
-              color: "#7d7a72",
+              color: "var(--muted-2)",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               marginBottom: 10,
@@ -426,9 +426,9 @@ function ProjectCard({ p, hovered, setHovered, index }) {
                 className="px-3 py-1 rounded-full text-[11px] tracking-wide"
                 style={{
                   fontFamily: "'DM Mono',monospace",
-                  background: "#eef2fd",
-                  border: "1px solid rgba(26,86,232,0.14)",
-                  color: "#1a56e8",
+                  background: "var(--accent-soft)",
+                  border: "1px solid var(--accent-border)",
+                  color: "var(--accent)",
                 }}
               >
                 {a}
@@ -443,9 +443,9 @@ function ProjectCard({ p, hovered, setHovered, index }) {
                 className="px-3 py-1 rounded-full text-[11px]"
                 style={{
                   fontFamily: "'DM Mono',monospace",
-                  background: "#f4f3ef",
-                  border: "1px solid #e4e2dd",
-                  color: "#6b6860",
+                  background: "var(--bg-alt)",
+                  border: "1px solid var(--border)",
+                  color: "var(--muted)",
                 }}
               >
                 {t}
@@ -467,7 +467,7 @@ export default function Projects() {
     <section
       id="projects"
       className="py-20 md:py-28"
-      style={{ background: "#f4f3ef", fontFamily: "'DM Sans', sans-serif" }}
+      style={{ background: "var(--bg-alt)", fontFamily: "'DM Sans', sans-serif" }}
     >
       <div className="max-w-[1000px] mx-auto px-6 md:px-16">
         <div ref={header.ref} className={`flex items-baseline justify-between mb-10 md:mb-12 ${header.className}`}>
@@ -476,13 +476,13 @@ export default function Projects() {
               fontFamily: "'Lora', Georgia, serif",
               fontSize: "clamp(22px, 2.8vw, 30px)",
               fontWeight: 700,
-              color: "#111110",
+              color: "var(--ink)",
               letterSpacing: "-0.02em",
             }}
           >
             Selected projects
           </h2>
-          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#7d7a72", letterSpacing: "0.08em" }}>
+          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "var(--muted-2)", letterSpacing: "0.08em" }}>
             02 / shipped work
           </span>
         </div>
@@ -497,13 +497,13 @@ export default function Projects() {
               fontFamily: "'Lora', Georgia, serif",
               fontSize: "clamp(22px, 2.8vw, 30px)",
               fontWeight: 700,
-              color: "#111110",
+              color: "var(--ink)",
               letterSpacing: "-0.02em",
             }}
           >
             Automation &amp; AI Pipelines
           </h2>
-          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#7d7a72", letterSpacing: "0.08em" }}>
+          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "var(--muted-2)", letterSpacing: "0.08em" }}>
             03 / backend &amp; tooling
           </span>
         </div>
