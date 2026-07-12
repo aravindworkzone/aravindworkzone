@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const links = ["About", "Projects", "Stack"];
+const links = ["About", "Experience", "Projects", "Stack"];
 
 function NavLink({ label, isActive, onClick }) {
   const [hovered, setHovered] = useState(false);
@@ -34,7 +34,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      const sections = ["home", "about", "projects", "skills", "contact"];
+      const sections = ["home", "about", "experience", "projects", "skills", "contact"];
       let current = "home";
       sections.forEach((id) => {
         const el = document.getElementById(id);
@@ -93,7 +93,7 @@ export default function Navbar() {
         className="fixed top-[62px] left-0 right-0 z-40 md:hidden flex flex-col px-6 py-5 gap-1 overflow-hidden transition-all duration-300"
         style={{
           background: "#fafaf8", borderBottom: menuOpen ? "1px solid #e4e2dd" : "none",
-          maxHeight: menuOpen ? "260px" : "0px", opacity: menuOpen ? 1 : 0,
+          maxHeight: menuOpen ? "320px" : "0px", opacity: menuOpen ? 1 : 0,
           pointerEvents: menuOpen ? "auto" : "none",
         }}
       >
