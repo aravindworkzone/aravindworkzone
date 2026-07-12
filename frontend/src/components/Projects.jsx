@@ -73,6 +73,157 @@ const projects = [
   },
 ];
 
+const tools = [
+  {
+    id: "job-engine",
+    name: "Job-Engine",
+    badge: "Backend · AI Pipeline",
+    description:
+      "A 5-stage idempotent pipeline that sources jobs from 8 APIs in parallel, verifies each against live career pages (Greenhouse / Lever / Tavily), and pushes only verified leads to Notion. Swappable LLM provider, cache-on-disk, unit-tested architectural invariants.",
+    stats: [
+      { val: "5", label: "Stages" },
+      { val: "8", label: "Job sources" },
+      { val: "0", label: "Duplicate leads" },
+      { val: "CI", label: "GitHub Actions" },
+    ],
+    tags: [
+      "Idempotent pipeline",
+      "Parallel sourcing",
+      "ATS verification",
+      "LLM provider abstraction",
+      "Zod schemas",
+      "Negative caching",
+    ],
+    repo: "https://github.com/aravindworkzone/Job-Engine",
+  },
+  {
+    id: "mail-analyzer",
+    name: "Mail Analyzer",
+    badge: "Automation · AI",
+    description:
+      "Serverless daily Gmail triage — categorizes and summarizes unread mail with an LLM, selectively enriches flagged items with web context, and appends a digest to Notion. Runs on GitHub Actions cron, read-only scope, privacy-sanitized queries.",
+    stats: [
+      { val: "24h", label: "Scan window" },
+      { val: "3", label: "Categories" },
+      { val: "0", label: "Servers" },
+      { val: "RO", label: "Read-only scope" },
+    ],
+    tags: [
+      "Serverless cron",
+      "Gmail OAuth",
+      "LLM JSON mode",
+      "Selective enrichment",
+      "Privacy-first",
+      "Append-only writes",
+    ],
+    repo: "https://github.com/aravindworkzone/Mail-Analizer",
+  },
+];
+
+function ToolCard({ t, index }) {
+  const reveal = useReveal();
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div ref={reveal.ref} className={`${reveal.className} h-full`} style={{ transitionDelay: `${index * 80}ms` }}>
+      <div
+        className="p-6 md:p-7 h-full flex flex-col cursor-default"
+        style={{
+          background: "white",
+          border: "1px solid #e4e2dd",
+          borderRadius: 16,
+          boxShadow: hovered ? "0 16px 48px rgba(0,0,0,0.12)" : "0 2px 12px rgba(0,0,0,0.04)",
+          transform: hovered ? "translateY(-4px)" : "translateY(0)",
+          transition: "all 0.28s cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <div className="flex flex-wrap items-center gap-3 mb-3">
+          <span
+            style={{
+              fontFamily: "'Lora', Georgia, serif",
+              fontSize: 22,
+              fontWeight: 700,
+              color: "#111110",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            {t.name}
+          </span>
+          <span
+            className="px-3 py-0.5 rounded-full text-[10px] font-medium tracking-wider"
+            style={{
+              fontFamily: "'DM Mono',monospace",
+              background: "#eef2fd",
+              border: "1px solid rgba(26,86,232,0.2)",
+              color: "#1a56e8",
+            }}
+          >
+            {t.badge}
+          </span>
+        </div>
+
+        <p className="text-[14px] text-[#6b6860] leading-[1.7] mb-5">{t.description}</p>
+
+        <div
+          className="flex flex-wrap gap-x-6 gap-y-3 py-4 mb-5"
+          style={{ borderTop: "1px solid #e4e2dd", borderBottom: "1px solid #e4e2dd" }}
+        >
+          {t.stats.map((s) => (
+            <div key={s.label}>
+              <span
+                className="block"
+                style={{
+                  fontFamily: "'Lora', Georgia, serif",
+                  fontSize: 20,
+                  fontWeight: 700,
+                  color: "#111110",
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1.1,
+                }}
+              >
+                {s.val}
+              </span>
+              <span
+                style={{
+                  fontFamily: "'DM Mono',monospace",
+                  fontSize: 10,
+                  color: "#7d7a72",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {s.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {t.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-3 py-1 rounded-full text-[11px] tracking-wide"
+              style={{
+                fontFamily: "'DM Mono',monospace",
+                background: "#eef2fd",
+                border: "1px solid rgba(26,86,232,0.14)",
+                color: "#1a56e8",
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-auto">
+          <Btn variant="border" href={t.repo}>GitHub</Btn>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function BrowserBar({ host }) {
   return (
     <div
@@ -310,6 +461,7 @@ function ProjectCard({ p, hovered, setHovered, index }) {
 export default function Projects() {
   const [hovered, setHovered] = useState(null);
   const header = useReveal();
+  const toolsHeader = useReveal();
 
   return (
     <section
@@ -338,6 +490,29 @@ export default function Projects() {
         {projects.map((p, i) => (
           <ProjectCard key={p.id} p={p} hovered={hovered} setHovered={setHovered} index={i} />
         ))}
+
+        <div ref={toolsHeader.ref} className={`flex items-baseline justify-between mt-16 md:mt-20 mb-10 md:mb-12 ${toolsHeader.className}`}>
+          <h2
+            style={{
+              fontFamily: "'Lora', Georgia, serif",
+              fontSize: "clamp(22px, 2.8vw, 30px)",
+              fontWeight: 700,
+              color: "#111110",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Automation &amp; AI Pipelines
+          </h2>
+          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#7d7a72", letterSpacing: "0.08em" }}>
+            03 / backend &amp; tooling
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+          {tools.map((t, i) => (
+            <ToolCard key={t.id} t={t} index={i} />
+          ))}
+        </div>
       </div>
     </section>
   );
