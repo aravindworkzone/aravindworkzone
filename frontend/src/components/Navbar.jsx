@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useResumeMeta from "../hooks/useResumeMeta";
 
 const links = ["About", "Experience", "Projects", "Stack"];
 
@@ -31,6 +32,7 @@ function NavLink({ label, isActive, onClick }) {
 export default function Navbar() {
   const [active, setActive] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
+  const resume = useResumeMeta();
 
   useEffect(() => {
     const onScroll = () => {
@@ -73,6 +75,16 @@ export default function Navbar() {
               onClick={() => scrollTo(l === "Stack" ? "skills" : l)}
             />
           ))}
+          <a
+            href={resume.downloadUrl}
+            target="_blank"
+            rel="noreferrer"
+            title={resume.updated ? `Updated ${resume.updated}` : "Resume"}
+            className="text-[13px] font-semibold px-5 py-2 rounded-md cursor-pointer no-underline hover:bg-[#f4f3ef] transition-colors"
+            style={{ color: "#111110", border: "1.5px solid #e4e2dd" }}
+          >
+            Resume ↓
+          </a>
           <button onClick={() => scrollTo("contact")}
             className="text-[13px] font-semibold px-5 py-2 rounded-md bg-[#111110] text-[#fafaf8] border-none cursor-pointer hover:opacity-80 transition-opacity">
             Hire Me
@@ -93,7 +105,7 @@ export default function Navbar() {
         className="fixed top-[62px] left-0 right-0 z-40 md:hidden flex flex-col px-6 py-5 gap-1 overflow-hidden transition-all duration-300"
         style={{
           background: "#fafaf8", borderBottom: menuOpen ? "1px solid #e4e2dd" : "none",
-          maxHeight: menuOpen ? "320px" : "0px", opacity: menuOpen ? 1 : 0,
+          maxHeight: menuOpen ? "400px" : "0px", opacity: menuOpen ? 1 : 0,
           pointerEvents: menuOpen ? "auto" : "none",
         }}
       >
@@ -104,8 +116,18 @@ export default function Navbar() {
             {l}
           </button>
         ))}
+        <a
+          href={resume.downloadUrl}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => setMenuOpen(false)}
+          className="mt-3 text-[13px] font-semibold px-5 py-3 rounded-md text-center no-underline cursor-pointer"
+          style={{ color: "#111110", border: "1.5px solid #e4e2dd" }}
+        >
+          Resume ↓
+        </a>
         <button onClick={() => scrollTo("contact")}
-          className="mt-3 text-[13px] font-semibold px-5 py-3 rounded-md bg-[#111110] text-[#fafaf8] border-none cursor-pointer">
+          className="mt-2 text-[13px] font-semibold px-5 py-3 rounded-md bg-[#111110] text-[#fafaf8] border-none cursor-pointer">
           Hire Me
         </button>
       </div>

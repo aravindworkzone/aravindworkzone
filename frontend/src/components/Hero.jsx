@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useResumeMeta from "../hooks/useResumeMeta";
 
 export function Btn({ children, onClick, href, variant = "dark" }) {
   const [hovered, setHovered] = useState(false);
@@ -35,6 +36,7 @@ const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior:
 
 export default function Hero() {
   const [tilt, setTilt] = useState({ x: 0, y: 0, resting: true });
+  const resume = useResumeMeta();
   return (
     <section
       id="home"
@@ -96,9 +98,25 @@ export default function Hero() {
             <span style={{ color: "#111110", fontWeight: 600 }}>AI-native tooling</span> that hold up under real users, not just in a demo.
           </p>
 
-          <div className="flex gap-3 flex-wrap" style={{ animation: "fadeUp 0.6s ease 0.3s both" }}>
+          <div className="flex gap-3 flex-wrap items-start" style={{ animation: "fadeUp 0.6s ease 0.3s both" }}>
             <Btn variant="dark" onClick={() => scrollTo("projects")}>View Projects →</Btn>
             <Btn variant="border" onClick={() => scrollTo("contact")}>Contact Me</Btn>
+            <div className="flex flex-col items-center gap-1.5">
+              <Btn variant="border" href={resume.downloadUrl}>Resume ↓</Btn>
+              {resume.updated && (
+                <span
+                  style={{
+                    fontFamily: "'DM Mono',monospace",
+                    fontSize: 10,
+                    color: "#8a877f",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Updated {resume.updated}
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Trust strip */}
@@ -148,20 +166,18 @@ export default function Hero() {
           onMouseLeave={() => setTilt({ x: 0, y: 0, resting: true })}
         >
           <div className="flex items-center gap-3 mb-5 pb-5" style={{ borderBottom: "1px solid #e4e2dd" }}>
-            <div
-              className="flex items-center justify-center rounded-xl text-[#fafaf8] flex-shrink-0"
+            {/* place avatar.jpg in frontend/public/ */}
+            <img
+              src="/avatar.jpg"
+              alt="Aravind A"
+              className="rounded-xl flex-shrink-0"
               style={{
                 width: 44,
                 height: 44,
-                background: "linear-gradient(135deg, #1a56e8 0%, #4f7fff 100%)",
-                fontFamily: "'Lora', Georgia, serif",
-                fontSize: 22,
-                fontWeight: 700,
+                objectFit: "cover",
                 boxShadow: "0 4px 14px rgba(26,86,232,0.35)",
               }}
-            >
-              A
-            </div>
+            />
             <div className="min-w-0">
               <div style={{ fontSize: 14, fontWeight: 700, color: "#111110", lineHeight: 1.2 }}>Aravind A</div>
               <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10.5, color: "#6b6860", letterSpacing: "0.04em" }}>
