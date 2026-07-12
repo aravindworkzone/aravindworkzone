@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
-const RESUME_FILE_ID = "PASTE_YOUR_GOOGLE_DRIVE_FILE_ID_HERE";
+const RESUME_FILE_ID = "13eorKFJZ3_E1Leln6ACrFNICCiNnmxBu";
 
 // Direct-download URL (not the Drive preview page)
 export const RESUME_DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${RESUME_FILE_ID}`;
 
 /**
  * Fetches the resume's last-modified date from the Google Drive API.
- * Returns { updated, downloadUrl } — `updated` is "MMM YYYY" (e.g. "Jul 2026"),
+ * Returns { updated, downloadUrl } — `updated` is "D MMM YYYY" (e.g. "12 Jul 2026"),
  * or null until loaded / if the fetch fails (the UI should just omit the label).
  * Requires VITE_DRIVE_API_KEY in the environment; never hardcode the key here.
  */
@@ -29,7 +29,7 @@ export default function useResumeMeta() {
       .then((data) => {
         if (cancelled || !data.modifiedTime) return;
         const d = new Date(data.modifiedTime);
-        setUpdated(d.toLocaleString("en-US", { month: "short", year: "numeric" }));
+        setUpdated(d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }));
       })
       .catch((err) => {
         console.warn("Resume last-updated date unavailable:", err);
