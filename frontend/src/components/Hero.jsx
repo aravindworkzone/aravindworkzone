@@ -89,10 +89,10 @@ export default function Hero() {
             className="mb-8 max-w-[480px]"
             style={{ fontSize: 16.5, color: "#6b6860", lineHeight: 1.75, animation: "fadeUp 0.6s ease 0.2s both" }}
           >
-            I build production-grade web apps with{" "}
-            <span style={{ color: "#111110", fontWeight: 600 }}>secure JWT auth</span>,{" "}
-            <span style={{ color: "#111110", fontWeight: 600 }}>role-based access</span>, and{" "}
-            <span style={{ color: "#111110", fontWeight: 600 }}>AI integration</span> — not tutorial clones.
+            I build production-grade web apps —{" "}
+            <span style={{ color: "#111110", fontWeight: 600 }}>secure auth</span>,{" "}
+            <span style={{ color: "#111110", fontWeight: 600 }}>payment integrity</span>, and{" "}
+            <span style={{ color: "#111110", fontWeight: 600 }}>AI-native tooling</span> that hold up under real users, not just in a demo.
           </p>
 
           <div className="flex gap-3 flex-wrap" style={{ animation: "fadeUp 0.6s ease 0.3s both" }}>
@@ -115,7 +115,7 @@ export default function Hero() {
                 <span style={{ fontFamily: "'Lora', Georgia, serif", fontSize: 18, fontWeight: 700, color: "#111110" }}>
                   {t.val}
                 </span>
-                <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#b8b5ae", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#7d7a72", letterSpacing: "0.08em", textTransform: "uppercase" }}>
                   {t.label}
                 </span>
               </div>
@@ -159,7 +159,7 @@ export default function Hero() {
           {[
             { label: "Role", val: "Full-Stack Dev", color: "#111110" },
             { label: "Building", val: "Internal portal", color: "#1a56e8" },
-            { label: "Shipped", val: "2 live apps", color: "#111110" },
+            { label: "Shipped", val: "2 SaaS, solo", color: "#111110" },
             { label: "Response", val: "< 24 hours", color: "#111110" },
             { label: "Status", val: "Open to work", color: "#1a7a4a" },
           ].map((row, i, arr) => (
@@ -168,7 +168,7 @@ export default function Hero() {
               className="flex justify-between items-center py-3"
               style={{ borderBottom: i < arr.length - 1 ? "1px solid #e4e2dd" : "none" }}
             >
-              <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#b8b5ae", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, color: "#7d7a72", letterSpacing: "0.08em", textTransform: "uppercase" }}>
                 {row.label}
               </span>
               <span style={{ fontSize: 13, fontWeight: 600, color: row.color, textAlign: "right" }}>{row.val}</span>
